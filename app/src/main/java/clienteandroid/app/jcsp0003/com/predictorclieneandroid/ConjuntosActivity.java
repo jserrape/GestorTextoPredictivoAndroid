@@ -14,7 +14,6 @@ import android.widget.Toast;
 public class ConjuntosActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     ListView lst;
-
     String[] conjuntos={"conj1","conj2","conj3","conj4","conj5"};
 
     @Override

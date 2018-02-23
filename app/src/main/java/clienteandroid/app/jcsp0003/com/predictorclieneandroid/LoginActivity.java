@@ -29,10 +29,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText passwordText;
     private Context context = this;
 
-    //private static final int SERVERPORT = 4444;
-    //private static final String ADDRESS = "192.168.0.100";
-   // private static Socket socket;
-    //private static PrintStream output;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

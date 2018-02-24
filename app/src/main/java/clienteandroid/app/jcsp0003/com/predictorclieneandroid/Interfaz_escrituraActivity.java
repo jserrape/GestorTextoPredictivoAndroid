@@ -82,19 +82,13 @@ public class Interfaz_escrituraActivity extends AppCompatActivity implements Ada
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        //getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
     /**
      * Selecciono un item de la lista y lo añado al texto principal
      */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         TextView tv=(TextView)view;
-        String text=edittext.getText().toString()+tv.getText();
+        String text=edittext.getText().toString()+tv.getText()+" ";
         edittext.setText(text);
         edittext.setSelection(edittext.length());
     }
@@ -137,11 +131,16 @@ public class Interfaz_escrituraActivity extends AppCompatActivity implements Ada
          */
         @Override
         protected void onPostExecute(String value){
-            if(value.length()>2) {
+            if(value.length() > 2) {
                 value = value.substring(1, value.length() - 1);
-                value=value.replaceAll(","," ,")+" ";
                 String[] parts = value.split(", ");
 
+                lst = findViewById(R.id.listvw);
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(interf, android.R.layout.simple_list_item_1, parts);
+                lst.setAdapter(arrayAdapter);
+                lst.setOnItemClickListener(interf);
+            }else{
+                String[] parts = {};
                 lst = findViewById(R.id.listvw);
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(interf, android.R.layout.simple_list_item_1, parts);
                 lst.setAdapter(arrayAdapter);

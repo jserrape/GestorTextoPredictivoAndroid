@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,13 +13,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.UnknownHostException;
 
+/**
+ * Created by jcsp0003 on 23/02/2018.
+ */
 public class ConjuntosActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     ListView lst;
@@ -48,9 +47,9 @@ public class ConjuntosActivity extends AppCompatActivity implements AdapterView.
         protected String doInBackground(String... values){
             try {
                 String request = values[0];
-                SingletonSession.Instance().getOutput().println(request);
+                SingletonSocket.Instance().getOutput().println(request);
 
-                InputStream stream = SingletonSession.Instance().getSocket().getInputStream();
+                InputStream stream = SingletonSocket.Instance().getSocket().getInputStream();
                 byte[] lenBytes = new byte[256];
                 stream.read(lenBytes,0,256);
                 String received = new String(lenBytes,"UTF-8").trim();
@@ -75,7 +74,7 @@ public class ConjuntosActivity extends AppCompatActivity implements AdapterView.
             lst.setAdapter(arrayAdapter);
             lst.setOnItemClickListener(conj);
 
-            Toast.makeText(context, value, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, value, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -89,7 +88,7 @@ public class ConjuntosActivity extends AppCompatActivity implements AdapterView.
             aux+=parts[z];
         }
 
-        Toast.makeText(context, "-"+aux+"-", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "-"+aux+"-", Toast.LENGTH_SHORT).show();
         cargarConjuntoTask tareaLogin = new cargarConjuntoTask();
         tareaLogin.execute("5"+aux);
         Intent intent = new Intent (view.getContext(), Interfaz_escrituraActivity.class);
@@ -103,9 +102,9 @@ public class ConjuntosActivity extends AppCompatActivity implements AdapterView.
         protected String doInBackground(String... values){
             try {
                 String request = values[0];
-                SingletonSession.Instance().getOutput().println(request);
+                SingletonSocket.Instance().getOutput().println(request);
 
-                InputStream stream = SingletonSession.Instance().getSocket().getInputStream();
+                InputStream stream = SingletonSocket.Instance().getSocket().getInputStream();
                 byte[] lenBytes = new byte[256];
                 stream.read(lenBytes,0,256);
                 String received = new String(lenBytes,"UTF-8").trim();

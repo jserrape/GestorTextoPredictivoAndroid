@@ -15,12 +15,12 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintStream;
-import java.net.InetAddress;
-import java.net.Socket;
 import java.net.UnknownHostException;
 
 
+/**
+ * Created by jcsp0003 on 22/02/2018.
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private Button buttonLogin;
@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void run() {
             try {
-                SingletonSession.Instance().inicializar();
+                SingletonSocket.Instance().inicializar();
             } catch (Exception e) {
                 Log.e("TCP", "C: Error", e);
             }
@@ -90,9 +90,9 @@ public class LoginActivity extends AppCompatActivity {
         protected String doInBackground(String... values){
             try {
                 String request = values[0];
-                SingletonSession.Instance().getOutput().println(request);
+                SingletonSocket.Instance().getOutput().println(request);
 
-                InputStream stream = SingletonSession.Instance().getSocket().getInputStream();
+                InputStream stream = SingletonSocket.Instance().getSocket().getInputStream();
                 byte[] lenBytes = new byte[256];
                 stream.read(lenBytes,0,256);
                 String received = new String(lenBytes,"UTF-8").trim();

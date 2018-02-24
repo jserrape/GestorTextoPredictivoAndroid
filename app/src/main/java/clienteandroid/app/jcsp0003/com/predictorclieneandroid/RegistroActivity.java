@@ -1,13 +1,9 @@
 package clienteandroid.app.jcsp0003.com.predictorclieneandroid;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,10 +13,12 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+/**
+ * Created by jcsp0003 on 22/02/2018.
+ */
 public class RegistroActivity extends AppCompatActivity {
 
     private static Socket socket;
@@ -82,9 +80,9 @@ public class RegistroActivity extends AppCompatActivity {
         protected String doInBackground(String... values){
             try {
                 String request = values[0];
-                SingletonSession.Instance().getOutput().println(request);
+                SingletonSocket.Instance().getOutput().println(request);
 
-                InputStream stream = SingletonSession.Instance().getSocket().getInputStream();
+                InputStream stream = SingletonSocket.Instance().getSocket().getInputStream();
                 byte[] lenBytes = new byte[256];
                 stream.read(lenBytes,0,256);
                 String received = new String(lenBytes,"UTF-8").trim();

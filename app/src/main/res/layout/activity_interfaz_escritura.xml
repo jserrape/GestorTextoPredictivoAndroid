@@ -9,7 +9,7 @@
     <EditText
         android:id="@+id/editText"
         android:layout_width="417dp"
-        android:layout_height="396dp"
+        android:layout_height="match_parent"
         android:autoText="true"
         android:ems="10"
         android:gravity="top"
@@ -18,8 +18,11 @@
 
     <ListView
         android:id="@+id/listvw"
-        android:layout_width="374dp"
-        android:layout_height="130dp"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        android:layout_width="176dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="417dp" />
 
 </android.support.constraint.ConstraintLayout>

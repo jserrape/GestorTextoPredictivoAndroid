@@ -82,7 +82,6 @@ public class ConjuntosActivity extends AppCompatActivity implements AdapterView.
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         TextView tv=(TextView)view;
-        //Toast.makeText(this,"You click on "+tv.getText()+i,Toast.LENGTH_SHORT).show();
 
         String[] parts = tv.getText().toString().split(" ");
         String aux="";

@@ -17,7 +17,7 @@ public class SingletonSession {
     private PrintStream output;
 
     private static final int SERVERPORT = 4444;
-    private static final String ADDRESS = "192.168.0.100";
+    private static final String ADDRESS = "192.168.0.104";
 
     //no outer class can initialize this class's object
     private SingletonSession() {

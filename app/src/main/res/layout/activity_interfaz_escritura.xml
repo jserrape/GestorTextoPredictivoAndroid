@@ -7,6 +7,7 @@
     tools:context="clienteandroid.app.jcsp0003.com.predictorclieneandroid.Interfaz_escrituraActivity">
 
     <EditText
+        android:imeOptions="flagNoExtractUi"
         android:id="@+id/editText"
         android:layout_width="417dp"
         android:layout_height="match_parent"

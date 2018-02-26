@@ -26,11 +26,12 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
+                    android:imeOptions="flagNoExtractUi"
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
-                    android:text="juan.carlos.wow.95@gmail.com"
+                    android:text=""
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -46,10 +47,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"
-                    android:text="40333"
+                    android:text=""
                     android:imeActionId="6"
                     android:imeActionLabel="Texto aux"
-                    android:imeOptions="actionUnspecified"
+                    android:imeOptions="flagNoExtractUi"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true" />

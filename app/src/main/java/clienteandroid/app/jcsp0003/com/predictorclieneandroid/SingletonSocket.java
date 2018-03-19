@@ -16,7 +16,7 @@ public class SingletonSocket {
     private PrintStream output;
 
     private static final int SERVERPORT = 4444;
-    private static final String ADDRESS = "192.168.0.104";
+    private static final String ADDRESS = "192.168.0.101";
 
 
     private SingletonSocket() {

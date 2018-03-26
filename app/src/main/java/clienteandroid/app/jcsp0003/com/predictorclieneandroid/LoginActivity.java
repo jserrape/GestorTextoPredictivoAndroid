@@ -15,7 +15,10 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.UnknownHostException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 
 /**
@@ -50,7 +53,31 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(correoText.getText().toString().length()>0 && passwordText.getText().toString().length()>0){
                     loginTask tareaLogin = new loginTask(v);
-                    tareaLogin.execute("8"+correoText.getText().toString()+"#"+passwordText.getText().toString());
+                    String aux;
+                    MessageDigest md = null;
+                    try {
+                        md = MessageDigest.getInstance("SHA-1");
+                    } catch (NoSuchAlgorithmException e) {
+                        e.printStackTrace();
+                    }
+                    byte[] textBytes = new byte[0];
+                    try {
+                        textBytes = passwordText.getText().toString().getBytes("iso-8859-1");
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                    md.update(textBytes, 0, textBytes.length);
+                    byte[] sha1hash = md.digest();
+                    StringBuilder buf = new StringBuilder();
+                    for (byte b : sha1hash) {
+                        int halfbyte = (b >>> 4) & 0x0F;
+                        int two_halfs = 0;
+                        do {
+                            buf.append((0 <= halfbyte) && (halfbyte <= 9) ? (char) ('0' + halfbyte) : (char) ('a' + (halfbyte - 10)));
+                            halfbyte = b & 0x0F;
+                        } while (two_halfs++ < 1);
+                    }
+                    tareaLogin.execute("8"+correoText.getText().toString()+"#"+buf.toString());
                 }else{
                     Toast.makeText(context, "Escriba correo y contraseña ", Toast.LENGTH_LONG).show();
                 }
